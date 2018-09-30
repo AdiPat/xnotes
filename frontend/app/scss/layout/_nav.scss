@@ -5,7 +5,7 @@
     flex-direction: column;
     background-color: white;
     //background-image: linear-gradient(to bottom, lighten(#d35400,5%), lighten(#f39c12,20%));
-    padding: 1rem 4rem 1rem 2rem;
+    padding: 1rem 3rem 1rem 1rem;
     
     @include respond(small) {
         display: none;
@@ -21,12 +21,17 @@
         display: flex;
         align-items: center;
         font-size: 1.8rem;
-        margin: 1rem 0 1rem 1rem;
+        padding: 1rem 2rem;
         //letter-spacing: 1px;
         line-height: 1.4;
         font-weight: 300;
         cursor: pointer;
+        transition: background-color 0.3s;
        // text-transform: uppercase;
+        
+        &:hover {
+            background-color: #eee;
+        }
 
         span {
             //flex: 0 0 60%;
