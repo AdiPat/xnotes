@@ -29,17 +29,25 @@ export const DOMStrings = {
     notePopup_body: '.note__popup-body',
     notePopup_background: '.note__popup-bg',
     notePopup_done: '.note__popup-done',
+    
+    // popup labels 
+    notePopup_labels: '.note__popup-labels',
+    
     // add note box
     addNoteBtn: '.btn__add-note',
     
     // action buttons
     actionIcon: '.note-icon',
+    actionBtn_text: '.btn__action--text',
+    checkboxLabelMenu: '#checkbox-menu',
     
     // colorpicker
     colorPicker: '.note__popup-colorpicker',
     colorPicker_color: '.colorpicker-color',
     
     // side nav
-    sideNav_item: '.side-nav__item'
+    sideNav_item: '.side-nav__item',
+    
+    
     
 };

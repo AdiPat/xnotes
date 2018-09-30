@@ -154,6 +154,9 @@
 
     &-labels {
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         top: -70%;
         left: 50%;
         opacity: 0;
@@ -164,6 +167,7 @@
         z-index: 5500;
         box-shadow: 0 0 1rem rgba(black, 0.4);
         transition: top 0.5s, opacity 0.5s;
+        padding-bottom: 1.5rem;
 
         &-list {
             display: flex;
@@ -171,7 +175,7 @@
             align-items: stretch;
             justify-content: center;
             list-style: none;
-            padding: 2.5rem 2rem;
+            padding: 2.5rem 2rem 0 2.5rem;
 
             li {
                 display: flex;
@@ -194,10 +198,21 @@
                 }
             }
         }
+        
+        .btn__action--text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 4rem;
+            width: 4rem;
+            border-radius: 50%;
+            margin-top: 1.5rem;
+        }
     }
 }
 
 #checkbox-menu {
+    display: none;
     &:checked + .note__popup-labels {
         opacity: 1;
         top: 50%;

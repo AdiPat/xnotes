@@ -110,7 +110,15 @@ export const setupListeners = (_Notes) => {
          
             $('.note__popup-bg').css('z-index', '-2000');
             $('.note__popup-bg').css('opacity', '0');
+            
+            // uncheck checkbox when closing popup
+            $(Constants.DOMStrings.checkboxLabelMenu).prop('checked', false);
         });
+    
+        // close labels
+//        $(Constants.DOMStrings.notePopup_labels).find(Constants.DOMStrings.actionBtn_text).click(function() {
+//            console.log("Close labels");
+//        });
     
         // done button
         $(Constants.DOMStrings.notePopup_done).click((event) => {
@@ -123,6 +131,12 @@ export const setupListeners = (_Notes) => {
     
         $(Constants.DOMStrings.addNoteBtn).click(function() {
             _Notes.createNote();                                      
+        });
+    
+
+        $(Constants.DOMStrings.notePopup_labels + ' > span').click(function() {
+            $(Constants.DOMStrings.checkboxLabelMenu).prop('checked', false);
+            console.log("Close labels");
         });
     
         // Action events
