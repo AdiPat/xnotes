@@ -78,6 +78,20 @@ class NoteManager():
         item = Note.objects.filter(note_id=str(note_id))
         item.delete()
         return status
+    
+    @staticmethod
+    def setLabels(note_id, labels):
+        status = True
+        if(not note_id or type(labels) != list):
+            return False
+        print("Setting labels: ", note_id,labels)
+        item = Note.objects.filter(note_id=str(note_id)).get()
+        for label in labels:
+            if label not in item.labels:
+                item.labels.append(label)
+        item.labels.sort()
+        item.save()
+        return status
         
     def searchNote(self, searchQuery):
         """Searches for note with either content or title matching the query."""

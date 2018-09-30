@@ -70,3 +70,15 @@ def delete(request, username):
         nm.deleteNote(note_id)
         return redirect('home', username=username)
     return HttpResponse('Delete Note: ', username)
+
+def label(request, username):
+    print("xnotesapp: Modify labels")
+    if request.method == 'POST':
+        labelData = request.POST
+        note_id = labelData.__getitem__('note_id')
+        labels = labelData.getlist('labels[]')
+        print(labelData, note_id, labels)
+        nm = NoteManager.NoteManager()
+        nm.setLabels(note_id, labels)
+        return redirect('home', username=username)
+    return HttpResponse("Adding labels: ", username)
