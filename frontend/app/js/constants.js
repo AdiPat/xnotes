@@ -30,8 +30,9 @@ export const DOMStrings = {
     notePopup_background: '.note__popup-bg',
     notePopup_done: '.note__popup-done',
     
-    // popup labels 
+    // popup label menu
     notePopup_labels: '.note__popup-labels',
+    notePopup_labelsList: '.note__popup-labels-list',
     
     // add note box
     addNoteBtn: '.btn__add-note',

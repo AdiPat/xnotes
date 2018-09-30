@@ -12,6 +12,7 @@ export default class Notes {
             noteData.content = $(this).find(Constants.DOMStrings.noteCard_content).html();
             noteData.created = $(this).find(Constants.DOMStrings.noteCard_created).html();
             noteData.color = '#' + $(this).attr(Constants.DOMStrings.noteCard_dataColor);
+            noteData.labels = ['all']
             data[noteData.note_id] = noteData;
         });
         // Add data for new note
@@ -26,6 +27,28 @@ export default class Notes {
         this.data = data;
         console.log(this.data);
     }
+    
+    // gets id of current open note from popup
+    getCurrentID() {
+        return String($(Constants.DOMStrings.notePopup).attr('data-id'));
+    }
+    
+    // gets data from label menu 
+    getLabelData() {
+        const labels = [];
+        console.log("getLabelData()", $(Constants.DOMStrings.checkboxLabelMenu).prop('checked'));
+        // pull data only if checkbox is checked
+        if($(Constants.DOMStrings.checkboxLabelMenu).prop('checked')) {
+            const labelList = $(Constants.DOMStrings.notePopup_labelsList);
+            labelList.children().each(function() {
+                const lbl = $(this).find('label').attr('data-label');
+                const selected = $(this).find('input').prop('checked');
+                if(selected)
+                    labels.push(lbl);
+            });
+        }
+        return labels;
+    }
 
     displayNote(note_id) {
         // get note data
@@ -35,6 +58,15 @@ export default class Notes {
         $(popupElem).css('background-color', noteData.color);
         $(popupElem).find(Constants.DOMStrings.notePopup_title).html(noteData.title);
         $(popupElem).find(Constants.DOMStrings.notePopup_body).html(noteData.content);
+        
+        // set labels 
+        $(Constants.DOMStrings.notePopup_labelsList).children().each(function() {
+            const dataLabel = $(this).children('label').attr('data-label');
+            if(noteData.labels.indexOf(dataLabel) == -1)
+                $(this).children('input').prop('checked', false);
+            else
+                $(this).children('input').prop('checked', true);
+        });
         
         // display
         $(popupElem).css('z-index', '3000');
@@ -107,6 +139,17 @@ export default class Notes {
         this.data[note_id].owner = Base.getUsername();
         Base.postData(this.data[note_id], path);
         console.log(data);
+    }
+    
+    addLabels(note_id, labels) {
+        const curLabels = this.data[note_id].labels;
+        console.log(labels);
+        labels.forEach( (e) => {
+            if(curLabels.indexOf(e) == -1)
+                curLabels.push(e);
+        });
+        this.data[note_id].labels = curLabels;
+        console.log(this.data[note_id]);
     }
     
 };
