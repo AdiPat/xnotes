@@ -197,3 +197,5 @@ typings/
 package-lock.json
 
 specs.txt
+# Don't show compiled css file
+style.css
