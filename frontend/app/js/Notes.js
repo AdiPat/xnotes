@@ -3,29 +3,13 @@ import * as Base from './base';
 
 export default class Notes {
 
-    constructor() {
-        let data = {};
-        $('.note-card').each(function () {
-            let noteData = {};
-            noteData.note_id = $(this).attr(Constants.DOMStrings.noteCard_dataId);
-            noteData.title = $(this).find(Constants.DOMStrings.noteCard_title).html();
-            noteData.content = $(this).find(Constants.DOMStrings.noteCard_content).html();
-            noteData.created = $(this).find(Constants.DOMStrings.noteCard_created).html();
-            noteData.color = '#' + $(this).attr(Constants.DOMStrings.noteCard_dataColor);
-            noteData.labels = ['all']
-            data[noteData.note_id] = noteData;
-        });
-        // Add data for new note
-        data[Constants.ID_NEW_NOTE] = {
-            note_id: "",
-            title: "",
-            content: "",
-            created: "",
-            color: ""
-        };
-        
-        this.data = data;
-        console.log(this.data);
+    constructor(notes) {
+        this.data = {};
+        for(let key in notes) {
+            notes[key].color = '#' + notes[key].color;
+            this.data[notes[key]['note_id']] = notes[key];
+        }
+        console.log("Notes constructor: Added notes!",this.data);
     }
     
     // gets id of current open note from popup
