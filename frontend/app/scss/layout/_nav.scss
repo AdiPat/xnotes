@@ -3,9 +3,9 @@
    // flex: 1;
     //border: 1px solid;
     flex-direction: column;
-    background-color: #FAFAFA;
+    background-color: white;
     //background-image: linear-gradient(to bottom, lighten(#d35400,5%), lighten(#f39c12,20%));
-    padding: 1rem 3rem;
+    padding: 1rem 4rem 1rem 2rem;
     
     @include respond(small) {
         display: none;
@@ -29,7 +29,7 @@
        // text-transform: uppercase;
 
         span {
-            flex: 0 0 60%;
+            //flex: 0 0 60%;
             //color: white;
         }
 
