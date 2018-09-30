@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.template import loader
 from django.shortcuts import redirect
 from django.http import QueryDict
@@ -82,3 +83,11 @@ def label(request, username):
         nm.setLabels(note_id, labels)
         return redirect('home', username=username)
     return HttpResponse("Adding labels: ", username)
+
+def all(request, username):
+    print("xnotesapp: Sending all notes")
+    nm = NoteManager.NoteManager()
+    ## Fix get notes to convert QuerySet into list
+    notes = list(Note.objects.filter(owner=username).order_by('last_edited').values())
+    print(type(notes), type(notes[0]), len(notes))
+    return JsonResponse(notes, safe=False)
