@@ -11,25 +11,6 @@
         display: none;
     }
 
-    &__brand {
-        display: flex;
-        align-items: center;
-        border: inherit;
-        margin-bottom: 2rem;
-        padding: 1rem;
-
-        .brand__logo {
-            height: 5rem;
-            width: 5rem;
-        }
-
-        .brand__text {
-            font-size: 3rem;
-            font-weight: 600;
-            //color: #e74c3c;
-        }
-    }
-
     &__list {
         display: flex;
         flex-direction: column;

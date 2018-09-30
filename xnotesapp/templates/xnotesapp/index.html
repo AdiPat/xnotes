@@ -10,71 +10,89 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="note__popup-bg">
-            &nbsp;
+    <div class="note__popup-bg">
+        &nbsp;
+    </div>
+    <div class="note__popup">
+        <span class="note__popup-actions--close">
+            &times;
+        </span>
+        <div class="note__popup-done">
+            Done
         </div>
-        <div class="note__popup">
-            <span class="note__popup-actions--close">
-                &times;
-            </span>
-            <div class="note__popup-done">
-                Done
+        <h1 class="note__popup-title" contenteditable>&nbsp;</h1>
+        <div class="note__popup-body" contenteditable>&nbsp;</div>
+        <div class="note__popup-actions">
+            <!--               COLORS        -->
+            <div class="note__popup-colorpicker">
+                <div class="colorpicker-color" data-color="white">&nbsp;</div>
+                <div class="colorpicker-color" data-color="red">&nbsp;</div>
+                <div class="colorpicker-color" data-color="orange">&nbsp;</div>
+                <div class="colorpicker-color" data-color="yellow">&nbsp;</div>
+                <div class="colorpicker-color" data-color="green">&nbsp;</div>
+                <div class="colorpicker-color" data-color="teal">&nbsp;</div>
+                <div class="colorpicker-color" data-color="blue">&nbsp;</div>
+                <div class="colorpicker-color" data-color="darkblue">&nbsp;</div>
+                <div class="colorpicker-color" data-color="purple">&nbsp;</div>
+                <div class="colorpicker-color" data-color="pink">&nbsp;</div>
+                <div class="colorpicker-color" data-color="brown">&nbsp;</div>
+                <div class="colorpicker-color" data-color="gray">&nbsp;</div>
             </div>
-            <h1 class="note__popup-title" contenteditable>&nbsp;</h1>
-            <div class="note__popup-body" contenteditable>&nbsp;</div>
-            <div class="note__popup-actions">
-                <!--               COLORS        -->
-                <div class="note__popup-colorpicker">
-                    <div class="colorpicker-color" data-color="white">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="red">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="orange">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="yellow">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="green">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="teal">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="blue">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="darkblue">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="purple">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="pink">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="brown">&nbsp;</div>
-                    <div class="colorpicker-color" data-color="gray">&nbsp;</div>
-                </div>
-                <!--                COLORS           -->
-                <svg class="note-icon" data-action="color">
-                    <use xlink:href="{% static 'res/sprite.svg' %}#paint-palette"></use>
-                </svg>
-                <svg class="note-icon" data-action="image">
-                    <use xlink:href="{% static 'res/sprite.svg' %}#picture"></use>
-                </svg>
-                <svg class="note-icon" data-action="copy">
-                    <use xlink:href="{% static 'res/sprite.svg' %}#download"></use>
-                </svg>
-                <svg class="note-icon" data-action="pin">
-                    <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
-                </svg>
-                <svg class="note-icon" data-action="discard">
-                    <use xlink:href="{% static 'res/sprite.svg' %}#garbage"></use>
-                </svg>
-            </div>
-            <h4 class="note__popup-last-modified">
-                Sept. 29, 2018, 2:42 a.m.
-            </h4>
+            <!--                COLORS           -->
+            <svg class="note-icon" data-action="color">
+                <use xlink:href="{% static 'res/sprite.svg' %}#paint-palette"></use>
+            </svg>
+            <svg class="note-icon" data-action="image">
+                <use xlink:href="{% static 'res/sprite.svg' %}#picture"></use>
+            </svg>
+            <svg class="note-icon" data-action="copy">
+                <use xlink:href="{% static 'res/sprite.svg' %}#download"></use>
+            </svg>
+            <svg class="note-icon" data-action="pin">
+                <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
+            </svg>
+            <svg class="note-icon" data-action="discard">
+                <use xlink:href="{% static 'res/sprite.svg' %}#garbage"></use>
+            </svg>
         </div>
-        <div class="side-nav">
-            <div class="side-nav__brand">
-                <svg class="brand__logo">
-                    <use xlink:href="{% static 'res/sprite.svg' %}#script"></use>
-                </svg>
-                <h3 class="brand__text">xNotes</h3>
-            </div>
-            <!-- Moved to top bar
-            <div class="side-nav__search">
-                <input type="search" class="input--text" placeholder="Search">
+        <h4 class="note__popup-last-modified">
+            Sept. 29, 2018, 2:42 a.m.
+        </h4>
+    </div>
+    <header class="header__top">
+        <div class="header__brand">
+            <svg class="brand__logo">
+                <use xlink:href="{% static 'res/sprite.svg' %}#script"></use>
+            </svg>
+            <h3 class="brand__text">xNotes</h3>
+        </div>
+        <div class="header__top--search">
+            <input type="text" class="input--text" placeholder="Search">
+            <svg class="icon-small">
+                <use xlink:href="{% static 'res/sprite.svg' %}#magnifying-glass"></use>
+            </svg>
+            <svg class="icon-small">
+                <use xlink:href="{% static 'res/sprite.svg' %}#list"></use>
+            </svg>
+            <svg class="icon-small">
+                <use xlink:href="{% static 'res/sprite.svg' %}#picture"></use>
+            </svg>
+            <svg class="icon-small">
+                <use xlink:href="{% static 'res/sprite.svg' %}#pencil"></use>
+            </svg>
+        </div>
+        <div class="header__top--user">
+            <img src="{% static 'res/' %}{{username}}.jpg" alt="{{username}}" class="header__top--user-img">
+            <h3 class="header__top--user-name">
+                {{username}}
                 <svg class="icon-small">
-                    <use xlink:href="{% static 'res/sprite.svg' %}#magnifying-glass"></use>
+                    <use xlink:href="{% static 'res/sprite.svg' %}#caret-down"></use>
                 </svg>
-            </div>
--->
+            </h3>
+        </div>
+    </header>
+    <div class="container">
+        <div class="side-nav">
             <nav class="side-nav__list">
                 <div class="side-nav__item" data-category="all">
                     <svg class="icon-small">
@@ -109,55 +127,6 @@
             </nav>
         </div>
         <div class="dashboard">
-            <div class="dashboard__top">
-                <div class="dashboard__top--search">
-                    <input type="text" class="input--text" placeholder="Search">
-                    <svg class="icon-small">
-                        <use xlink:href="{% static 'res/sprite.svg' %}#magnifying-glass"></use>
-                    </svg>
-                    <svg class="icon-small">
-                        <use xlink:href="{% static 'res/sprite.svg' %}#list"></use>
-                    </svg>
-                    <svg class="icon-small">
-                        <use xlink:href="{% static 'res/sprite.svg' %}#picture"></use>
-                    </svg>
-                    <svg class="icon-small">
-                        <use xlink:href="{% static 'res/sprite.svg' %}#pencil"></use>
-                    </svg>
-                </div>
-<!--
-                <div class="add-note__box">
-                    <svg class="note-icon note-pin">
-                        <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
-                    </svg>
-                    <div class="add-note__box-title" contenteditable>Title</div>
-                    <div class="add-note__box-text" contentEditable>
-                        Write something...
-                    </div>
-                    <div class="add-note__box-actions">
-                        <svg class="note-icon">
-                            <use xlink:href="{% static 'res/sprite.svg' %}#paint-palette"></use>
-                        </svg>
-                        <svg class="note-icon">
-                            <use xlink:href="{% static 'res/sprite.svg' %}#picture"></use>
-                        </svg>
-                        <svg class="note-icon">
-                            <use xlink:href="{% static 'res/sprite.svg' %}#download"></use>
-                        </svg>
-                    </div>
-                </div>
--->
-                <div class="dashboard__top--user">
-                    <img src="{% static 'res/' %}{{username}}.jpg" alt="{{username}}" class="dashboard__top--user-img">
-                    <h3 class="dashboard__top--user-name">
-                        {{username}}
-                        <svg class="icon-small">
-                            <use xlink:href="{% static 'res/sprite.svg' %}#caret-down"></use>
-                        </svg>
-                    </h3>
-
-                </div>
-            </div>
             <div class="dashboard__content">
                 <div class="notes-col">
                     {% for note in data1 %}
