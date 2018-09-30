@@ -44,7 +44,7 @@ def home(request, username):
 
 def edit(request, username, id_hash):
     if request.method == 'POST':
-        #print("Editing stuff...", request.POST);
+        print("Editing stuff...", request.POST);
         note = request.POST
         nm = NoteManager.NoteManager()
         nm.editNote(id_hash, note)

@@ -66,6 +66,8 @@ class NoteManager():
             note.content = noteData.__getitem__('content')
             note.color = noteData.__getitem__('color')
             note.last_edited = timezone.now()
+            ## Update labels
+            note.labels = list(noteData.getlist('labels[]'))
             note.save()
             status = True
         ## Find all notes with edited flag set and update them
