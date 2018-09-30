@@ -5,6 +5,11 @@
     //border: 1px solid;
     min-height: 60vh;
 
+    @include respond(small) {
+        flex: 0 0 1;
+        width: 100%;
+    }
+    
     &__top {
         display: flex;
         position: relative;
@@ -17,6 +22,8 @@
         
         @include respond(small) {
             padding: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
 
@@ -33,12 +40,21 @@
                 flex: 1;
                 margin-left: 1rem;
             }
+            
+            @include respond(small) {
+                flex: 0 0 100%;
+                order: 2;
+            }
 
             .input--text {
                 border: none;
                 margin-right: auto;
                 flex: 10;
                 // border-right: 1px solid grey;
+                
+                @include respond(small) {
+                    flex: 1;
+                }
             }
 
             .icon-small {
@@ -57,6 +73,10 @@
             padding: 5px 1rem;
             border-radius: 3px;
             //border: 1px solid;
+            
+            @include respond(small) {
+                display: none;
+            }
 
             &-name {
                 //text-transform: uppercase;
@@ -94,6 +114,12 @@
                 
                 @include respond(medium) {
                     margin-left: 0;
+                    height: 6rem;
+                    width: 6rem;
+                }
+                
+                @include respond(small) {
+                    
                 }
             }
         }

@@ -16,4 +16,8 @@ body {
     @include respond(large) {
         padding: 0;
     }
+    
+    @include respond(small) {
+        overflow: hidden;
+    }
 }
