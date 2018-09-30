@@ -1,0 +1,19 @@
+body {
+    //padding: 1.5rem;
+    // background-color: darkblue;
+    background-color: lighten(black, 15%);
+}
+
+.container {
+    display: flex;
+    position: relative;
+    //border: 1px solid black;
+    padding: 1.5rem;
+    z-index: 100;
+    background-color: lighten(black, 15%);
+    box-shadow: 0 0 1.5rem rgba(black, 0.4);
+    
+    @include respond(large) {
+        padding: 0;
+    }
+}

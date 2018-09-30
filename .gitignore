@@ -195,3 +195,5 @@ typings/
 .vscode
 .eslintcache
 package-lock.json
+
+specs.txt

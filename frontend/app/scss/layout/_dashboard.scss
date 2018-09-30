@@ -1,0 +1,116 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    //border: 1px solid;
+    min-height: 60vh;
+
+    &__top {
+        display: flex;
+        position: relative;
+        //border: 1px solid black;
+        //margin-top: 1rem;
+        align-items: center;
+        justify-content: space-around;
+        background-color: white;
+        padding: 3rem;
+        
+        @include respond(small) {
+            padding: 1rem;
+        }
+        
+
+        &--search {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+            box-shadow: 0 0 1rem rgba(black, 0.4);
+            flex: 0 0 60%;
+            padding: 5px 1rem;
+            //border: 1px solid;
+            
+            @include respond(medium) {
+                flex: 1;
+                margin-left: 1rem;
+            }
+
+            .input--text {
+                border: none;
+                margin-right: auto;
+                flex: 10;
+                // border-right: 1px solid grey;
+            }
+
+            .icon-small {
+                margin: 0 5px;
+                flex: 1;
+            }
+        }
+
+        &--user {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-left: auto;
+            //margin-right: 1.5rem;
+            //background-color: gainsboro;
+            padding: 5px 1rem;
+            border-radius: 3px;
+            //border: 1px solid;
+
+            &-name {
+                //text-transform: uppercase;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                font-size: 2.1rem;
+                font-weight: 400;
+                align-items: center;
+                margin-bottom: -3px;
+
+
+                .icon-small {
+                    height: 2rem;
+                    width: 2rem;
+                    margin: 0 1rem;
+                    fill: orangered;
+                    cursor: pointer;
+                    
+                    &:hover {
+                        transform: translateY(3px);
+                        animation: verticalOscillate 0.5s infinite both;
+                    }
+
+                }
+            }
+
+            &-img {
+                height: 8rem;
+                width: 8rem;
+                border-radius: 50%;
+                margin-left: 1rem;
+                margin-right: 1rem;
+                border: 3px solid orangered;
+                
+                @include respond(medium) {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        //padding: 3rem;
+        background-color: white;
+        overflow: hidden;
+        flex: 1;
+        //padding-top: 3rem;
+        //border: 1px solid yellow;
+        @include respond(medium) {
+            flex: 0 1 auto;
+            flex-direction: column;
+            padding-bottom: 5rem;
+        }
+     }
+}

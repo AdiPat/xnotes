@@ -1,0 +1,30 @@
+// add button
+.btn__add-note {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 5rem;
+    right: 5rem;
+    font-size: 3rem;
+    padding: 1rem;
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+    background-color: coral;
+    color: white;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 0 1rem rgba(black, 0.4);
+    transition: all 0.5s;
+    
+    &:hover {
+        background-color: darken(coral, 5%);
+        box-shadow: 0 0 2rem rgba(black, 0.4);
+        transform: scale(1.02);
+    }
+    
+    span {
+        margin-top: -5px;
+    }
+}

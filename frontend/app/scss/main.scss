@@ -1,0 +1,75 @@
+// TODO: Use optimal font ratios
+
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/animations';
+@import 'components/card';
+@import 'components/popup';
+@import 'components/icons';
+@import 'components/buttons';
+@import 'components/input';
+@import 'layout/nav';
+@import 'layout/dashboard';
+@import 'pages/home';
+
+
+
+/*// box to add a note
+.add-note__box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 5px; // both should match padding and margin of top
+    left: 5px;
+    min-width: 40vw;
+    max-width: 50vw;
+    //border: 1px solid red;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 0 1.5rem rgba(black, 0.4);
+    z-index: -100;
+    opacity: 0;
+    transition: all 0.3s;
+    min-height: 30vh;
+    
+    &--active {
+        opacity: 1 !important; // bad
+        z-index: 1000 !important;
+    }
+
+    &-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        color: grey;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &-text {
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        flex: 1;
+        color: grey;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &-actions {
+        display: flex;
+        align-items: center;
+
+        .note-icon {
+            margin: 1rem 1.5rem 5px 0;
+            fill: darken(grey, 20%);
+        }
+    }
+}*/

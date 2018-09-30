@@ -1,0 +1,19 @@
+.note-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: grey;
+    cursor: pointer;
+}
+
+.note-pin {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 4000;
+}
+
+// small icon
+.icon-small {
+    height: 2rem;
+    width: 2rem;
+}

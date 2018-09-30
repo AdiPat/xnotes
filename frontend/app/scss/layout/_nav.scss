@@ -1,0 +1,61 @@
+.side-nav {
+    display: flex;
+   // flex: 1;
+    //border: 1px solid;
+    flex-direction: column;
+    background-color: #FAFAFA;
+    //background-image: linear-gradient(to bottom, lighten(#d35400,5%), lighten(#f39c12,20%));
+    padding: 1rem 3rem;
+    
+    @include respond(small) {
+        display: none;
+    }
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        border: inherit;
+        margin-bottom: 2rem;
+        padding: 1rem;
+
+        .brand__logo {
+            height: 5rem;
+            width: 5rem;
+        }
+
+        .brand__text {
+            font-size: 3rem;
+            font-weight: 600;
+            //color: #e74c3c;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        border: inherit;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        margin: 1rem 0 1rem 1rem;
+        //letter-spacing: 1px;
+        line-height: 1.4;
+        font-weight: 300;
+        cursor: pointer;
+       // text-transform: uppercase;
+
+        span {
+            flex: 0 0 60%;
+            //color: white;
+        }
+
+        .icon-small {
+            margin-right: 1rem;
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+}

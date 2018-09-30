@@ -1,0 +1,30 @@
+// media query manager
+
+@mixin respond($size) {
+    
+    $breakpoint: 0;
+    
+    @if $size == xlarge {
+        $breakpoint: $breakpoint-xlarge;    
+    }
+    
+    @if $size == large {
+        $breakpoint: $breakpoint-large;
+    }
+    
+    @if $size == medium {
+        $breakpoint: $breakpoint-medium;
+    }
+    
+    @if $size == small {
+        $breakpoint: $breakpoint-small;
+    }
+    
+    @if $size == xsmall {
+        $breakpoint: $breakpoint-xsmall;
+    }
+    
+    @media only screen and (max-width: $breakpoint) {
+        @content
+    }
+}
