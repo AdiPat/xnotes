@@ -28,3 +28,34 @@
         margin-top: -5px;
     }
 }
+
+.btn__action--text {
+    position: relative;
+    font-weight: 400;
+    padding: 5px 1rem;
+    border: 1px solid black;
+    border-radius: 3px;
+    overflow: hidden;
+    font-size: 1.6rem;
+    cursor: pointer;
+    
+    &::after {
+        display: block;
+        content: "";
+        width: 5px;
+        height: 80%;
+        position: absolute;
+        background-color: transparent;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 7000;
+        transition: transform 0.5s;
+    }
+    
+    &:hover::after {
+        transform: scale(18);
+        background-color: rgba(lightgray,0.2);
+    }
+}

@@ -14,6 +14,20 @@
         &nbsp;
     </div>
     <div class="note__popup">
+        <input type="checkbox" id="checkbox-menu">
+        <div class="note__popup-labels">
+            <ul class="note__popup-labels-list">
+                <li>
+                    <label for="checkbox-personal">Personal</label><input id="checkbox-personal" type="checkbox">
+                </li>
+                <li>
+                    <label for="checkbox-work">Work</label><input id="checkbox-work" type="checkbox">
+                </li>
+                <li>
+                    <label for="checkbox-archive">Archive</label><input id="checkbox-archive" type="checkbox">
+                </li>
+            </ul>
+        </div>
         <span class="note__popup-actions--close">
             &times;
         </span>
@@ -54,6 +68,9 @@
             <svg class="note-icon" data-action="discard">
                 <use xlink:href="{% static 'res/sprite.svg' %}#garbage"></use>
             </svg>
+            <label class="btn__action--text" for="checkbox-menu">
+                Labels
+            </label>
         </div>
         <h4 class="note__popup-last-modified">
             Sept. 29, 2018, 2:42 a.m.
