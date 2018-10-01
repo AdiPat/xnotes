@@ -18,7 +18,8 @@ export default class Notes {
                 filledDefault = true;
             }
         }
-        this.data.curLabel = 'all'; // current label
+        this.curLabel = 'all'; // current label
+        this.curColor = 'all'; // current color
         console.log("Notes constructor: Added notes!",this.data);
     }
     
@@ -135,20 +136,45 @@ export default class Notes {
         console.log(data);
     }
     
+    toggleCard(note_id, state) {
+        const noteCard = $(`[data-id = ${note_id}]`);
+        if($(noteCard).length && state === 'visible')
+            $(noteCard).css('display', 'flex');
+        else if($(noteCard).length && state === 'hidden')
+            $(noteCard).css('display', 'none');
+        else
+            return false;
+    }
+    
     setCurLabel(newLabel) {
-        this.data.curLabel = newLabel; 
+        this.curLabel = newLabel; 
         // render views
         for(let key in this.data) {
-            if(key === Constants.ID_NEW_NOTE || key === 'curLabel')
+            if(key === Constants.ID_NEW_NOTE) // TODO: Store this seperately
                 continue;
-            const noteCard = $(`[data-id = ${key}]`);
-            if(noteCard && this.data[key].labels.indexOf(this.data.curLabel) === -1)
-                $(noteCard).css('display', 'none');
+            if(this.data[key].labels.indexOf(this.curLabel) === -1)
+                this.toggleCard(key, 'hidden');
             else 
-                $(noteCard).css('display', 'flex');
+                this.toggleCard(key, 'visible');
         }
     }
     
+    // set color from Constants.COLORS 
+    setCurColor(newColor) {
+        if(Object.keys(Constants.COLORS).indexOf(newColor) === -1)
+            return false;
+        this.curColor = newColor;
+        for(let key in this.data) {
+            if(key === Constants.ID_NEW_NOTE)
+                continue;
+            
+            if(this.data[key].color === Constants.COLORS[this.curColor])
+                this.toggleCard(key, 'visible');
+            else
+                this.toggleCard(key, 'hidden');
+        }
+    }
+     
     addLabels(note_id, labels) {
         let curLabels = this.data[note_id].labels;
         if(!curLabels)
