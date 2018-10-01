@@ -5,10 +5,20 @@ export default class Notes {
 
     constructor(notes) {
         this.data = {};
+        let filledDefault = false;
         for(let key in notes) {
             notes[key].color = '#' + notes[key].color;
             this.data[notes[key]['note_id']] = notes[key];
+            if(!filledDefault) {
+                this.data[Constants.ID_NEW_NOTE] = {};
+                for(let k in notes[key]) {
+                     this.data[Constants.ID_NEW_NOTE][k] = null;
+                }
+                filledDefault = true;
+            }
         }
+        // fill empty new notes object
+        
         console.log("Notes constructor: Added notes!",this.data);
     }
     
@@ -96,7 +106,7 @@ export default class Notes {
         const data = {};
         data.title = $(popupElem).find(Constants.DOMStrings.notePopup_title).html();
         data.content = $(popupElem).find(Constants.DOMStrings.notePopup_body).html();
-        data.color = $(popupElem).css('background-color');
+        data.color = Base.rgbToHex(String($(popupElem).css('background-color')));
         return data;
     }
     
@@ -126,7 +136,9 @@ export default class Notes {
     }
     
     addLabels(note_id, labels) {
-        const curLabels = this.data[note_id].labels;
+        let curLabels = this.data[note_id].labels;
+        if(!curLabels)
+            curLabels = [];
         console.log(labels);
         labels.forEach( (e) => {
             if(curLabels.indexOf(e) == -1)

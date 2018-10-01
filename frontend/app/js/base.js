@@ -64,3 +64,26 @@ export const fadeToggle = (elem) => {
         $(elem).css('z-index', '-5000');
     }
 };
+
+
+// 54/16 = 36 
+export const rgbToHex = (rgbVal) => {
+    if(rgbVal.indexOf('rgb') != -1)
+        return rgbVal;
+    function intToHex(val) {
+        const table = {10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F'};
+        let hexStr = "";
+        while(val != 0) {
+            let rem = val % 16;
+            if(rem > 9)
+                hexStr += table[rem];
+            else
+                hexStr += String(rem);
+            val = parseInt(val/16);
+        }   
+        return hexStr.split("").reverse("").join("");
+    }
+    let rgbStr = rgbVal.replace(')','').replace('rgb(','').replace(' ', '');
+    const arr = rgbStr.split(',').map((e) => parseInt(e.trim()));
+    return arr.reduce( (acc,e) => acc + intToHex(e), '');
+};
