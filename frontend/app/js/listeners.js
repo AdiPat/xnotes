@@ -179,10 +179,10 @@ const setupActionEventListeners = (_Notes) => {
 };
 
 const setupNavListeners = (_Notes) => {
-
     $(Constants.DOMStrings.sideNav_item).click(function () {
         const parent = Base.moveUpDOM($(this), Base.selectorToClass(Constants.DOMStrings.sideNav_item));
         const category = $(parent[1]).attr('data-category');
-        navHandler[category](_Notes);
+        console.log("CLICKED: ", category);
+        _Notes.setCurLabel(category);
     });
 }

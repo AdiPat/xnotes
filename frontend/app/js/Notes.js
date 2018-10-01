@@ -9,6 +9,7 @@ export default class Notes {
         for(let key in notes) {
             notes[key].color = '#' + notes[key].color;
             this.data[notes[key]['note_id']] = notes[key];
+            // fill empty new notes object
             if(!filledDefault) {
                 this.data[Constants.ID_NEW_NOTE] = {};
                 for(let k in notes[key]) {
@@ -17,8 +18,7 @@ export default class Notes {
                 filledDefault = true;
             }
         }
-        // fill empty new notes object
-        
+        this.data.curLabel = 'all'; // current label
         console.log("Notes constructor: Added notes!",this.data);
     }
     
@@ -133,6 +133,20 @@ export default class Notes {
         this.data[note_id].owner = Base.getUsername();
         Base.postData(this.data[note_id], path);
         console.log(data);
+    }
+    
+    setCurLabel(newLabel) {
+        this.data.curLabel = newLabel; 
+        // render views
+        for(let key in this.data) {
+            if(key === Constants.ID_NEW_NOTE || key === 'curLabel')
+                continue;
+            const noteCard = $(`[data-id = ${key}]`);
+            if(noteCard && this.data[key].labels.indexOf(this.data.curLabel) === -1)
+                $(noteCard).css('display', 'none');
+            else 
+                $(noteCard).css('display', 'flex');
+        }
     }
     
     addLabels(note_id, labels) {
