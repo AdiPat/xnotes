@@ -10,5 +10,5 @@ urlpatterns = [
     path('xnote/<slug:username>/create', views.create, name='create'),
     path('xnote/<slug:username>/delete', views.delete, name='delete'),
     path('xnote/<slug:username>/label', views.label, name='label'),
-    path('xnote/<slug:username>/<slug:id_hash>', views.edit, name='edit'),
+    path('xnote/<slug:username>/<slug:note_id>', views.edit, name='edit'),
 ]

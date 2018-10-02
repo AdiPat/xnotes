@@ -42,12 +42,12 @@ def home(request, username):
     context = {'username': username, 'data1':dataChunks[0], 'data2':dataChunks[1], 'data3':dataChunks[2]}
     return HttpResponse(template.render(context, request))
 
-def edit(request, username, id_hash):
+def edit(request, username, note_id):
     if request.method == 'POST':
         print("Editing stuff...", request.POST);
         note = request.POST
         nm = NoteManager.NoteManager()
-        nm.editNote(id_hash, note)
+        nm.editNote(note_id, note)
         return redirect('home', username=username)
     else:
         print("Request Method: ", request.method)
