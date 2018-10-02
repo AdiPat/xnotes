@@ -66,9 +66,16 @@ def create(request, username):
 def delete(request, username):
     print("xnotesapp: Delete view.",username)
     if request.method == 'DELETE':
-        note_id = QueryDict(request.body).__getitem__('note_id')
+        data = QueryDict(request.body)
+        note_id = data.__getitem__('note_id')
+        hard_delete = False
+        try:
+            hardDelete = data.__getiitem__('hard')
+        except AttributeError:
+            pass
         nm = NoteManager.NoteManager()
-        nm.deleteNote(note_id)
+        print(note_id, hard_delete)
+        nm.deleteNote(note_id,hard_delete=hard_delete)
         return redirect('home', username=username)
     return HttpResponse('Delete Note: ', username)
 

@@ -74,11 +74,14 @@ class NoteManager():
         return status
     
     @staticmethod
-    def deleteNote(note_id):
+    def deleteNote(note_id, hard_delete=False):
         status = True
-        print("Deleting note: ", note_id)
-        item = Note.objects.filter(note_id=str(note_id))
-        item.delete()
+        print("Deleting note: ", note_id, " hard_delete = ",hard_delete);
+        item = Note.objects.filter(note_id=str(note_id)).get()
+        if(hard_delete):
+            item.delete()
+        else:
+            item.trash = True
         return status
     
     @staticmethod
