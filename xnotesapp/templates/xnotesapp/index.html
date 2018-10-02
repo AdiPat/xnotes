@@ -149,6 +149,9 @@
                 <div class="notes-col">
                     {% for note in data1 %}
                     <div class="note-card" style="background-color: #{{note.color}}" data-id={{note.note_id}} data-color={{note.color}}>
+                        <svg class="note-icon" data-action="pin">
+                            <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
+                        </svg>
                         <h2 class="note-card__title">{{note.title}}</h2>
                         <p class="note-card__content">{{note.content}}</p>
                         <h4 class="note-card__created">{{note.last_edited}}</h4>
@@ -159,6 +162,9 @@
                 <div class="notes-col">
                     {% for note in data2 %}
                     <div class="note-card" style="background-color: #{{note.color}}" data-id={{note.note_id}} data-color={{note.color}}>
+                        <svg class="note-icon" data-action="pin">
+                            <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
+                        </svg>
                         <h2 class="note-card__title">{{note.title}}</h2>
                         <p class="note-card__content">{{note.content}}</p>
                         <h4 class="note-card__created">{{note.last_edited}}</h4>
@@ -169,6 +175,9 @@
                 <div class="notes-col">
                     {% for note in data3 %}
                     <div class="note-card" style="background-color: #{{note.color}}" data-id={{note.note_id}} data-color={{note.color}}>
+                        <svg class="note-icon" data-action="pin">
+                            <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
+                        </svg>
                         <h2 class="note-card__title">{{note.title}}</h2>
                         <p class="note-card__content">{{note.content}}</p>
                         <h4 class="note-card__created">{{note.last_edited}}</h4>

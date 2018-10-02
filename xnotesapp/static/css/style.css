@@ -38,6 +38,7 @@ html {
   margin: 1rem;
   padding: 2rem;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-self: stretch;
   align-items: flex-start;
@@ -67,6 +68,16 @@ html {
   .note-card__created {
     font-size: 1.5rem;
     font-weight: 600; }
+  .note-card .note-icon {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    height: 2rem;
+    width: 2rem;
+    fill: #676767;
+    transform: rotateZ(45deg); }
+    .note-card .note-icon:hover {
+      fill: black; }
 
 .note__popup {
   position: fixed;
