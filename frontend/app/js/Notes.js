@@ -133,6 +133,7 @@ export default class Notes {
         }
     }
     
+    // TODO: add all fields
     saveNote(note_id) {
         const data = this.getEditedNote(note_id);
         this.data[note_id].title = data.title;

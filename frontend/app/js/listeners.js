@@ -150,7 +150,7 @@ export const setupListeners = (_Notes) => {
         // get note properties
         let elem = e.target;
         while(!($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.noteCard)))) {
-            if($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.actionIcon))) // terminate
+            if($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.actionIcon)))sav // terminate
                 return;
             elem = $(elem).parent();
         }
