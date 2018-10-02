@@ -133,7 +133,7 @@ export const setupListeners = (_Notes) => {
         // display note by id
         const note_id = String($(elem).attr('data-id'));
         if(shiftPressed) 
-            _Notes.highlightCard(note_id);
+            _Notes.highlightCard(note_id, true,true); // TODO: Get rid of status. redundant
         else
             _Notes.displayNote(note_id);
     });

@@ -8,6 +8,7 @@ export default class Notes {
         let filledDefault = false;
         for(let key in notes) {
             notes[key].color = '#' + notes[key].color;
+            notes[key].selected = false; // selected state
             this.data[notes[key]['note_id']] = notes[key];
             // fill empty new notes object
             if(!filledDefault) {
@@ -188,14 +189,16 @@ export default class Notes {
         console.log(this.data[note_id]);
     }
     
-    highlightCard(note_id, status=true) {
+    highlightCard(note_id, status=true, toggle=false) {
         let border =  '2px solid orangered';
-        if(!status)
-            border = '2px solid transparent';
-        
         const card = $(`[data-id = ${note_id}]`);
-        if($(card).length) {
+        if($(card).length) { 
+            if(toggle) // overrides status
+                status = !this.data[note_id].selected; 
+            if(!status)
+                border = '2px solid transparent';
             $(card).css('border', border);
+            this.data[note_id].selected = status;
         }
     }
     
@@ -206,6 +209,7 @@ export default class Notes {
                 if($(card).length) {
                     const border = (status)?('2px solid orangered'):('2px solid transparent');
                     $(card).css('border', border);
+                    this.data[note_id].selected = status;
                 }
             }
         });
