@@ -155,10 +155,12 @@ export default class Notes {
         for(let key in this.data) {
             if(key === Constants.ID_NEW_NOTE) // TODO: Store this seperately
                 continue;
-            if(this.data[key].labels.indexOf(this.curLabel) === -1)
-                this.toggleCard(key, 'hidden');
-            else 
+            const isTrash = this.data[key].trash;
+            // show trashed items only if curLabel == trash is set
+            if((!isTrash && this.data[key].labels.indexOf(this.curLabel) !== -1) || (isTrash && this.curLabel === 'trash'))
                 this.toggleCard(key, 'visible');
+            else 
+                this.toggleCard(key, 'hidden');
         }
     }
     
