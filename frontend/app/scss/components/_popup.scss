@@ -10,6 +10,7 @@
     opacity: 0;
     padding: 2rem;
     //border: 3px solid black;
+    border: none !important; // prevents card selection from highlighting the border
     background-color: white;
 
     &-title {

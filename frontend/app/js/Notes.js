@@ -209,7 +209,7 @@ export default class Notes {
                 if($(card).length) {
                     const border = (status)?('2px solid orangered'):('2px solid transparent');
                     $(card).css('border', border);
-                    this.data[note_id].selected = status;
+                    this.data[id].selected = status;
                 }
             }
         });
