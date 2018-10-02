@@ -148,6 +148,7 @@
             <div class="dashboard__content">
                 <div class="notes-col">
                     {% for note in data1 %}
+                    {% if note.trash == False %}
                     <div class="note-card" style="background-color: #{{note.color}}" data-id={{note.note_id}} data-color={{note.color}}>
                         <svg class="note-icon {% if note.pinned %}pinned{% endif %}" data-action="pin">
                             <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
@@ -156,11 +157,13 @@
                         <p class="note-card__content">{{note.content}}</p>
                         <h4 class="note-card__created">{{note.last_edited}}</h4>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
 
                 <div class="notes-col">
                     {% for note in data2 %}
+                    {% if note.trash == False %}
                     <div class="note-card" style="background-color: #{{note.color}}" data-id={{note.note_id}} data-color={{note.color}}>
                         <svg class="note-icon {% if note.pinned %}pinned{% endif %}" data-action="pin">
                             <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
@@ -169,11 +172,13 @@
                         <p class="note-card__content">{{note.content}}</p>
                         <h4 class="note-card__created">{{note.last_edited}}</h4>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
 
                 <div class="notes-col">
                     {% for note in data3 %}
+                    {% if note.trash == False %}
                     <div class="note-card" style="background-color: #{{note.color}}" data-id={{note.note_id}} data-color={{note.color}}>
                         <svg class="note-icon {% if note.pinned %}pinned{% endif %}" data-action="pin">
                             <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
@@ -182,6 +187,7 @@
                         <p class="note-card__content">{{note.content}}</p>
                         <h4 class="note-card__created">{{note.last_edited}}</h4>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
