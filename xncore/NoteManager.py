@@ -82,6 +82,7 @@ class NoteManager():
             item.delete()
         else:
             item.trash = True
+            item.save()
         return status
     
     @staticmethod
