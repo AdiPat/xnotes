@@ -34,6 +34,7 @@ export const DOMStrings = {
     notePopup_body: '.note__popup-body',
     notePopup_background: '.note__popup-bg',
     notePopup_done: '.note__popup-done',
+    notePopup_lastEdited: '.note__popup-last-modified',
     
     // popup label menu
     notePopup_labels: '.note__popup-labels',

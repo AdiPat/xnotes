@@ -54,6 +54,8 @@ export default class Notes {
         $(popupElem).css('background-color', noteData.color);
         $(popupElem).find(Constants.DOMStrings.notePopup_title).html(noteData.title);
         $(popupElem).find(Constants.DOMStrings.notePopup_body).html(noteData.content);
+        // TODO: Format this properly
+        $(popupElem).find(Constants.DOMStrings.notePopup_lastEdited).html(noteData.last_edited); 
         
         // set labels 
         $(Constants.DOMStrings.notePopup_labelsList).children().each(function() {

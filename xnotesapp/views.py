@@ -38,7 +38,7 @@ def home(request, username):
     nm = NoteManager.NoteManager()
     notes = nm.getNotes(username)
     dataChunks = chunks(notes, 3)
-    print(dataChunks)
+    #print(dataChunks)
     context = {'username': username, 'data1':dataChunks[0], 'data2':dataChunks[1], 'data3':dataChunks[2]}
     return HttpResponse(template.render(context, request))
 

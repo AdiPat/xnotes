@@ -22,16 +22,16 @@ class NoteManager():
     def getNotes(username, title="", note_id="", order="last_edited"):
         """Retrieves note by title or note id. If multiple notes of the same title are found, fetch all sorted by edited date."""
         ## Fetch note from self.notes
+        qset = []
         results = []
         if(note_id):
-            for n in Note.objects.filter(note_id=note_id).order_by(order):
-                results.append(n)
+            qset = Note.objects.filter(note_id=note_id).order_by(order)
         elif(title):
-            for n in Note.objects.filter(title=title).order_by(order):
-                results.append(n)
+            qset = Note.objects.filter(title=title).order_by(order)
         else: # Fetch all
-            for n in Note.objects.filter(owner=username).order_by(order):
-                results.append(n)
+            qset = Note.objects.filter(owner=username).order_by(order)         
+        for n in qset:
+            results.append(n)
         return results
     
     def createNote(self, noteData):
