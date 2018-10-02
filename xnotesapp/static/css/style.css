@@ -78,6 +78,9 @@ html {
     transform: rotateZ(45deg); }
     .note-card .note-icon:hover {
       fill: black; }
+  .note-card .pinned {
+    fill: black;
+    transform: rotateZ(45deg) scale(1.3); }
 
 .note__popup {
   position: fixed;
