@@ -62,9 +62,11 @@ class NoteManager():
         if(note_id and noteData is not None):
             pk = Note.objects.filter(note_id=note_id)[0].pk
             note = Note.objects.get(pk=pk)
+            ## TODO: This is too clunky, adding each entry every time I add a field
             note.title = noteData.__getitem__('title')
             note.content = noteData.__getitem__('content')
             note.color = noteData.__getitem__('color')
+            note.trash = noteData.__getitem__('trash')
             note.last_edited = timezone.now()
             ## Update labels
             note.labels = list(noteData.getlist('labels[]'))

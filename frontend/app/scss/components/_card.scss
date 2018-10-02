@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     flex: 1;
-    
+
     @include respond(medium) {
         flex-direction: row;
         flex-wrap: wrap;
@@ -23,7 +23,7 @@
     box-shadow: 0 0 5px rgba(black, 0.4);
     transition: all 0.2s;
     cursor: pointer;
-    
+
     @include respond(medium) {
         justify-content: flex-start;
         width: calc(100% * (1/2) - 1rem * 2);
@@ -56,21 +56,37 @@
         font-size: 1.5rem;
         font-weight: 600;
     }
-    
+
     .note-icon {
         position: absolute;
-        top: 2rem;
         right: 2rem;
         height: 2rem;
         width: 2rem;
         fill: darken(grey, 10%);
-        transform: rotateZ(45deg);
+        &:first-child {
+            top: 2rem;
+            transform: rotateZ(45deg);
+        }
+        
+        &:nth-child(2) {
+            height: auto;
+            width: auto;
+            bottom: 2rem;
+            color: darken(grey, 25%);
+            font-weight: 600;
+            font-size: 1.4rem;
+            user-select: none;
+            &:hover {
+                color: black;
+            }
+        }
+        
         
         &:hover {
             fill: black;
         }
     }
-    
+
     .pinned {
         fill: black;
         transform: rotateZ(45deg) scale(1.3);

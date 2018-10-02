@@ -70,12 +70,23 @@ html {
     font-weight: 600; }
   .note-card .note-icon {
     position: absolute;
-    top: 2rem;
     right: 2rem;
     height: 2rem;
     width: 2rem;
-    fill: #676767;
-    transform: rotateZ(45deg); }
+    fill: #676767; }
+    .note-card .note-icon:first-child {
+      top: 2rem;
+      transform: rotateZ(45deg); }
+    .note-card .note-icon:nth-child(2) {
+      height: auto;
+      width: auto;
+      bottom: 2rem;
+      color: #404040;
+      font-weight: 600;
+      font-size: 1.4rem;
+      user-select: none; }
+      .note-card .note-icon:nth-child(2):hover {
+        color: black; }
     .note-card .note-icon:hover {
       fill: black; }
   .note-card .pinned {

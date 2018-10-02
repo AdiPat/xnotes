@@ -6,6 +6,19 @@ var shiftPressed = false;
 // TODO: Organize listeners into proper categories 
 
 const actionHandler = (function () {
+    
+    let data = {};
+    
+    // if the hander needs any data
+    const setData = (param) => {
+        data = param;
+    }
+    
+    // clear data after you have finished using it
+    const clearData = (data) => {
+        data = {};
+    }
+    
     const color = (_Notes) => {
         // TODO
         Base.fadeToggle($(Constants.DOMStrings.colorPicker));
@@ -32,6 +45,12 @@ const actionHandler = (function () {
         console.log($(Constants.DOMStrings.notePopup).attr('data-id'));
         _Notes.deleteNote($(Constants.DOMStrings.notePopup).attr('data-id'));
     };
+    
+    const restore = (_Notes) => {
+        let val = Base.moveUpDOM(data.event.target, Constants.DOMStrings.noteCard.replace('.', ''));
+        if(val[0]) // found
+            _Notes.restoreNote($(val[1]).attr('data-id'));
+    }
 
     const pin = (_Notes) => {
         // TODO:
@@ -47,12 +66,15 @@ const actionHandler = (function () {
     };
 
     return {
+        setData, // sets data required for the handler 
+        clearData, // clears data after use so that the next handler doesn't accidentally use this data
         color,
         image,
         copy,
         pin,
         archive,
         discard,
+        restore,
         pickLabel
     };
 
@@ -127,9 +149,12 @@ export const setupListeners = (_Notes) => {
         e.preventDefault();
         // get note properties
         let elem = e.target;
-        while (!($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.noteCard))))
+        while(!($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.noteCard)))) {
+            if($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.actionIcon))) // terminate
+                return;
             elem = $(elem).parent();
-
+        }
+            
         // display note by id
         const note_id = String($(elem).attr('data-id'));
         if(shiftPressed) 
@@ -178,10 +203,15 @@ export const setupListeners = (_Notes) => {
 
 const setupActionEventListeners = (_Notes) => {
     // colorpicker
-    $(Constants.DOMStrings.actionIcon).click(function () {
+    $(Constants.DOMStrings.actionIcon).click(function(e) {
+        // for now , actions happen on popup and card
         const dataAction = $(this).attr('data-action');
-        if (dataAction)
+        console.log(dataAction);
+        if (dataAction) {
+            actionHandler.setData({event:e});
             actionHandler[dataAction](_Notes);
+            actionHandler.clearData();
+        }
     });
 
     // change color

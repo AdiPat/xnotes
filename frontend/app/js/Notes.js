@@ -123,6 +123,16 @@ export default class Notes {
         Base.HttpRequest('DELETE', {note_id: note_id, hard: this.data[note_id].trash}, path);
     }
     
+    restoreNote(note_id) {
+        if(this.data[note_id])  {
+            this.data[note_id].trash = false;
+            if(this.curLabel === 'trash') {
+                this.toggleCard(note_id, 'hidden'); // note should not appear in trash anymore
+            }
+            this.updateNote(note_id);
+        }
+    }
+    
     saveNote(note_id) {
         const data = this.getEditedNote(note_id);
         this.data[note_id].title = data.title;
@@ -220,5 +230,18 @@ export default class Notes {
         });
     }
     
-    
+    // sends updated note data from our local copy to server
+    updateNote(note_id) {
+        // for testing.. 
+        const username = 'sparky'; 
+        
+        $.ajax({
+           type: 'POST',
+           data: this.data[note_id],
+           path: `/xnote/${username}/edit`,
+           success: function(response) {
+               console.log(`Updated note=${note_id} || ${response}`);
+           }
+        });    
+    }
 };
