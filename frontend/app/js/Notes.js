@@ -119,7 +119,8 @@ export default class Notes {
         let path =  url.substring(url.indexOf('xnote')-1);
         path += 'delete'; // /xnote/username/delete
         console.log(note_id, path)
-        Base.HttpRequest('DELETE', {note_id: note_id}, path);
+        // if the item is trashed, hard delete
+        Base.HttpRequest('DELETE', {note_id: note_id, hard: this.data[note_id].trash}, path);
     }
     
     saveNote(note_id) {
