@@ -15,6 +15,11 @@ export const COLORS = {
     gray: '#CFD8DC'
 }
 
+export const KEY_CODES = {
+    shift: 16,
+    esc: 27
+}
+
 export const DOMStrings = {
     // Note card
     noteCard: '.note-card',

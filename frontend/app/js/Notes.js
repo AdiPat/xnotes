@@ -188,4 +188,28 @@ export default class Notes {
         console.log(this.data[note_id]);
     }
     
+    highlightCard(note_id, status=true) {
+        let border =  '2px solid orangered';
+        if(!status)
+            border = '2px solid transparent';
+        
+        const card = $(`[data-id = ${note_id}]`);
+        if($(card).length) {
+            $(card).css('border', border);
+        }
+    }
+    
+    highlightAllCards(status=true) {
+        Object.keys(this.data).forEach((id) => {
+            if(id !== Constants.ID_NEW_NOTE) {
+                const card = $(`[data-id = ${String(id)}]`);
+                if($(card).length) {
+                    const border = (status)?('2px solid orangered'):('2px solid transparent');
+                    $(card).css('border', border);
+                }
+            }
+        });
+    }
+    
+    
 };

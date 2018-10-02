@@ -40,7 +40,7 @@ export const HttpRequest = (method='GET', data, path) => {
 }
 
 export const selectorToClass = (selector) => {
-    return selector.substring(1); // strip the first dot
+    return selector.substring(1); // strip the . or #
 }
 
 export const getUsername = () => {

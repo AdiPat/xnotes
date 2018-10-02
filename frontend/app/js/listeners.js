@@ -1,6 +1,7 @@
 import * as Constants from './constants';
 import * as Base from './base';
 
+var shiftPressed = false;
 
 // TODO: Organize listeners into proper categories 
 
@@ -102,16 +103,39 @@ export const setupListeners = (_Notes) => {
     //       $('.add-note__box').addClass('add-note__box--active');
     //    });
     //
+    
+    $(document).keydown(function(event) {
+        if(event.keyCode === Constants.KEY_CODES['shift']) { //control
+            event.preventDefault(); // prevent text from getting highlighted
+            shiftPressed = true; 
+        }
+        
+        if(!shiftPressed && event.keyCode === Constants.KEY_CODES['esc']) { // escape
+            shiftPressed = false;
+            _Notes.highlightAllCards(false);
+        }
+    });
+    
+    $(document).keyup(function(event) {
+        if(event.keyCode === Constants.KEY_CODES['shift']) {
+            shiftPressed = false; 
+        } 
+    });
 
-    $('.note-card').click((e) => {
-        console.log("Open card for editing.");
+    $(Constants.DOMStrings.noteCard).click((e) => {
+        console.log("Clicked note. ");
+        e.preventDefault();
         // get note properties
         let elem = e.target;
-        while (!($(elem).hasClass('note-card')))
+        while (!($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.noteCard))))
             elem = $(elem).parent();
 
         // display note by id
-        _Notes.displayNote(String($(elem).attr('data-id')));
+        const note_id = String($(elem).attr('data-id'));
+        if(shiftPressed) 
+            _Notes.highlightCard(note_id);
+        else
+            _Notes.displayNote(note_id);
     });
 
     // close button
