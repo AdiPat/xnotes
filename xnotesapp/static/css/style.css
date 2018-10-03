@@ -473,8 +473,7 @@ html {
     display: flex;
     flex-flow: column wrap;
     background-color: white;
-    overflow: hidden;
-    border: 1px solid black; }
+    overflow: hidden; }
 
 body {
   background-color: #262626;
