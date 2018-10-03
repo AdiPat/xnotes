@@ -146,8 +146,7 @@
         </div>
         <div class="dashboard">
             <div class="dashboard__content">
-                <div class="notes-col">
-                    {% for note in data1 %}
+                    {% for note in data %}
                     <div class="note-card {% if note.trash %}trash-card{% endif %}" style="background-color: #{{note.color}}" data-id={{note.note_id}} data-color={{note.color}}>
                         <svg class="note-icon {% if note.pinned %}pinned{% endif %}" data-action="pin">
                             <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
@@ -160,39 +159,6 @@
                         <h4 class="note-card__created">{{note.last_edited}}</h4>
                     </div>
                     {% endfor %}
-                </div>
-
-                <div class="notes-col">
-                    {% for note in data2 %}
-                    <div class="note-card {% if note.trash %}trash-card{% endif %}" style="background-color: #{{note.color}}" data-id={{note.note_id}} data-color={{note.color}}>
-                        <svg class="note-icon {% if note.pinned %}pinned{% endif %}" data-action="pin">
-                            <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
-                        </svg>
-                        {% if note.trash %}
-                        <span class="note-icon" data-action="restore">RESTORE</span>
-                        {% endif %}
-                        <h2 class="note-card__title">{{note.title}}</h2>
-                        <p class="note-card__content">{{note.content}}</p>
-                        <h4 class="note-card__created">{{note.last_edited}}</h4>
-                    </div>
-                    {% endfor %}
-                </div>
-
-                <div class="notes-col">
-                    {% for note in data3 %}
-                    <div class="note-card {% if note.trash %}trash-card{% endif %}" style="background-color: #{{note.color}}" data-id={{note.note_id}} data-color={{note.color}}>
-                        <svg class="note-icon {% if note.pinned %}pinned{% endif %}" data-action="pin">
-                            <use xlink:href="{% static 'res/sprite.svg' %}#pin"></use>
-                        </svg>
-                        {% if note.trash %}
-                        <span class="note-icon" data-action="restore">RESTORE</span>
-                        {% endif %}
-                        <h2 class="note-card__title">{{note.title}}</h2>
-                        <p class="note-card__content">{{note.content}}</p>
-                        <h4 class="note-card__created">{{note.last_edited}}</h4>
-                    </div>
-                    {% endfor %}
-                </div>
             </div>
         </div>
         <div class="btn__add-note">

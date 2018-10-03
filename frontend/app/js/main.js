@@ -24,6 +24,7 @@ window.$ = $;
 
 
 $('document').ready(function () {
+    Base.initGrid('.dashboard__content', '.note-card', 3,2,1);
     var checkExist = setInterval(() => {
         if (_Notes) {
             Listeners.setupListeners(_Notes);

@@ -3,7 +3,7 @@
     flex-direction: column;
     flex: 4;
     //border: 1px solid;
-    min-height: 60vh;
+   // min-height: 60vh;
 
     @include respond(small) {
         flex: 0 0 1;
@@ -12,16 +12,11 @@
     
     &__content {
         display: flex;
-        //padding: 3rem;
+        flex-flow: column wrap;
+       // padding: 1rem;
         background-color: white;
         overflow: hidden;
-        flex: 1;
-        //padding-top: 3rem;
-        //border: 1px solid yellow;
-        @include respond(medium) {
-            flex: 0 1 auto;
-            flex-direction: column;
-            padding-bottom: 5rem;
-        }
+        //flex: 1;
+        border: 1px solid black;
      }
 }

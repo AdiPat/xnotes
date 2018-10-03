@@ -118,6 +118,14 @@ const navHandler = (function () {
 // TODO Seperate listeners to improve readability 
 
 export const setupListeners = (_Notes) => {
+    
+    // masonry grid
+    $(window).on('resize load', () => {
+        Base.initGrid('.dashboard__content','.note-card',3,2,1); 
+    });
+    
+    
+    
     // Open add note
     // TODO: Replace with + button
     //    $('.dashboard__top--add').find('.input--text').focus(() => {
@@ -194,6 +202,7 @@ export const setupListeners = (_Notes) => {
     $(Constants.DOMStrings.addNoteBtn).click(function () {
         _Notes.createNote();
     });
+    
 
     // Action events
     setupActionEventListeners(_Notes);

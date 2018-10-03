@@ -37,9 +37,8 @@ def home(request, username):
     template = loader.get_template('xnotesapp/index.html')
     nm = NoteManager.NoteManager()
     notes = nm.getNotes(username)
-    dataChunks = chunks(notes, 3)
     #print(dataChunks)
-    context = {'username': username, 'data1':dataChunks[0], 'data2':dataChunks[1], 'data3':dataChunks[2]}
+    context = {'username': username, 'data':notes}
     return HttpResponse(template.render(context, request))
 
 def edit(request, username, note_id):

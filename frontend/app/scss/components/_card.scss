@@ -17,7 +17,7 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    align-self: stretch;
+    width: calc(33.33% - 1rem * 2);
     align-items: flex-start;
     justify-content: center;
     box-shadow: 0 0 5px rgba(black, 0.4);
@@ -25,9 +25,12 @@
     cursor: pointer;
 
     @include respond(medium) {
-        justify-content: flex-start;
-        width: calc(100% * (1/2) - 1rem * 2);
+        width: calc(50% - 1rem*2);
         //max-width: calc(100% - 1rem * 2);
+    }
+    
+    @include respond(small) {
+        width: calc(100% - 1rem*2);
     }
 
     &:hover {

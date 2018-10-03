@@ -11,7 +11,7 @@ html {
 html {
   font-family: 'Lato', sans-serif;
   font-size: 62.5%; }
-  @media only screen and (max-width: 36.25em) {
+  @media only screen and (max-width: 37.5em) {
     html {
       font-size: 50%; } }
 
@@ -40,7 +40,7 @@ html {
   display: flex;
   position: relative;
   flex-direction: column;
-  align-self: stretch;
+  width: calc(33.33% - 1rem * 2);
   align-items: flex-start;
   justify-content: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -48,8 +48,10 @@ html {
   cursor: pointer; }
   @media only screen and (max-width: 60em) {
     .note-card {
-      justify-content: flex-start;
-      width: calc(100% * (1/2) - 1rem * 2); } }
+      width: calc(50% - 1rem*2); } }
+  @media only screen and (max-width: 37.5em) {
+    .note-card {
+      width: calc(100% - 1rem*2); } }
   .note-card:hover {
     transform: translateY(-2px) translateZ(5px);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); }
@@ -436,7 +438,7 @@ html {
   flex-direction: column;
   background-color: white;
   padding: 1rem 3rem 1rem 1rem; }
-  @media only screen and (max-width: 36.25em) {
+  @media only screen and (max-width: 37.5em) {
     .side-nav {
       display: none; } }
   .side-nav__list {
@@ -462,22 +464,17 @@ html {
 .dashboard {
   display: flex;
   flex-direction: column;
-  flex: 4;
-  min-height: 60vh; }
-  @media only screen and (max-width: 36.25em) {
+  flex: 4; }
+  @media only screen and (max-width: 37.5em) {
     .dashboard {
       flex: 0 0 1;
       width: 100%; } }
   .dashboard__content {
     display: flex;
+    flex-flow: column wrap;
     background-color: white;
     overflow: hidden;
-    flex: 1; }
-    @media only screen and (max-width: 60em) {
-      .dashboard__content {
-        flex: 0 1 auto;
-        flex-direction: column;
-        padding-bottom: 5rem; } }
+    border: 1px solid black; }
 
 body {
   background-color: #262626;
@@ -494,7 +491,7 @@ body {
   position: relative;
   z-index: 100;
   background-color: #262626; }
-  @media only screen and (max-width: 36.25em) {
+  @media only screen and (max-width: 37.5em) {
     .container {
       overflow: hidden; } }
 
