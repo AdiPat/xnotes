@@ -67,7 +67,7 @@ export const fadeToggle = (elem) => {
 
 // 54/16 = 36 
 export const rgbToHex = (rgbVal) => {
-    if (rgbVal.indexOf('rgb') != -1)
+    if (rgbVal.indexOf('rgb') === -1)
         return rgbVal;
 
     function intToHex(val) {
@@ -126,7 +126,4 @@ export const initGrid = (grid, gridItem, lRows, mRows, sRows) => {
 
     // TODO: bug: Sometimes some cards go out of the grid. 
     $(gridElem).css('height', ((totalHeight / curCol) + totalHeight / (len + 1)) + 'px');
-
-
-    console.log(breakpoints, window.screen.width, curCol, totalHeight, $(gridElem).css('height'), i);
 }

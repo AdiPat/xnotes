@@ -42,11 +42,13 @@ class NoteManager():
             created_time = timezone.now()
             edited_time = created_time
             nid = utils.create_pKey(created_time)
+            print('createNote() ',noteData)
             # TODO: Update all fields dynamically 
             newNote = Note(
                 owner=noteData.__getitem__('owner'), 
                 note_id=nid, 
                 title=noteData.__getitem__('title'), content=noteData.__getitem__('content'), color=noteData.__getitem__('color'), created=created_time, 
+                labels=noteData.getlist('labels[]'),
                 last_edited=edited_time
             )
             newNote.save()

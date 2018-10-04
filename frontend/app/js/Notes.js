@@ -16,6 +16,7 @@ export default class Notes {
                 for(let k in notes[key]) {
                      this.data[Constants.ID_NEW_NOTE][k] = null;
                 }
+                this.data[Constants.ID_NEW_NOTE]['note_id'] = Constants.ID_NEW_NOTE;
                 filledDefault = true;
             }
         }
@@ -79,6 +80,7 @@ export default class Notes {
         $(Constants.DOMStrings.notePopup_background).css('opacity', '1');
     }
     
+    // initializes popup element with default values and ID of new note
     createNote() {
         // set properties
         console.log("create note");
@@ -104,16 +106,6 @@ export default class Notes {
         this.data[note_id].color = newColor;
     }
     
-    // TODO: Change color
-    getEditedNote(note_id) {
-        const popupElem = $(`[data-id=${note_id}]`);
-        const data = {};
-        data.title = $(popupElem).find(Constants.DOMStrings.notePopup_title).html();
-        data.content = $(popupElem).find(Constants.DOMStrings.notePopup_body).html();
-        data.color = Base.rgbToHex(String($(popupElem).css('background-color')));
-        return data;
-    }
-    
     deleteNote(note_id) {
         const url = $(location).attr('href');
         let path =  url.substring(url.indexOf('xnote')-1);
@@ -135,9 +127,14 @@ export default class Notes {
     
     // TODO: add all fields
     saveNote(note_id) {
-        const data = this.getEditedNote(note_id);
-        this.data[note_id].title = data.title;
-        this.data[note_id].content = data.content;
+        const popupElem = $(`[data-id=${note_id}]`);
+        this.data[note_id].title = $(popupElem).find(Constants.DOMStrings.notePopup_title).html();
+        this.data[note_id].content = $(popupElem).find(Constants.DOMStrings.notePopup_body).html();
+        this.data[note-id].color = Base.rgbToHex(String($(popupElem).css('background-color')));
+        // labels get set automatically when the user closes the labels option
+        this.data[note_id].pinned = false; 
+        this.data[note_id].trash = false;
+        
         const url = $(location).attr('href');
         let path =  url.substring(url.indexOf('xnote')-1);
         if(note_id === Constants.ID_NEW_NOTE)
