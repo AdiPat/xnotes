@@ -246,7 +246,7 @@ const setupNavListeners = (_Notes) => {
         const parent = Base.moveUpDOM($(this), Base.selectorToClass(Constants.DOMStrings.sideNav_item));
         const category = $(parent[1]).attr('data-category');
         console.log("CLICKED: ", category);
-        Base.initGrid('.dashboard__content', '.note-card', 3,2,1);
+        //Base.initGrid('.dashboard__content', '.note-card', 3,2,1);
         _Notes.setCurLabel(category);
     });
 }
