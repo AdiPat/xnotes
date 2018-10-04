@@ -9,9 +9,9 @@ from xncore import utils
 # Verifies user credentials
 #
 
-def verify_credentials(uData):
-    salt = uData.salt
-    pw_hash = uData.password # get users password hash from db
+def verify_credentials(uData, password):
+    salt = uData['salt']
+    pw_hash = uData['password'] # get users password hash from db
     u_hash = hash_password(password,salt)
     return pw_hash == u_hash
 

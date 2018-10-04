@@ -5,9 +5,13 @@ from django.template import loader
 from django.shortcuts import redirect
 from django.http import QueryDict
 from .models import Note
+from .models import User
 from xncore import NoteManager
 from xncore import xauth
 import math
+
+import sys
+import traceback
 # Create your views here.
 
 def index(request):
@@ -100,7 +104,21 @@ def all(request, username):
 def login(request):
     print('xnotesapp: Login')
     if request.method == 'POST':
-        print(request.POST)
+        status = False
+        try:
+            uname = request.POST.__getitem__('username')
+            pwd = request.POST.__getitem__('password')
+            uData = User.objects.filter(username=uname)
+            if(uData and len(uData.values())== 1):
+                status = xauth.verify_credentials(uData.values()[0], pwd)
+            print(uname,pwd,uData.values())
+            if(status):
+                return redirect('home', username=uname)
+            else:
+                return HttpResponse('Invalid credentials')
+        except:
+            print("Invalid credentials", request.POST)
+            traceback.print_exc()
     template = loader.get_template('xnotesapp/login.html')
     return HttpResponse(template.render({},request))
 
