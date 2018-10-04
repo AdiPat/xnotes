@@ -59,3 +59,30 @@
         background-color: rgba(lightgray,0.2);
     }
 }
+
+.btn-submit {
+    &,
+    &:link,
+    &:visited {
+        display: inline-block;
+        padding: 1rem 3rem;
+        text-align: center;
+        text-decoration: none;
+        background-color: navy;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        word-spacing: 1px;
+        font-size: 1.6rem;
+        transition: transform 0.5s;
+        border-radius: 3px;
+        box-shadow: 0 0 5px #777;
+    }
+    
+    &:hover,
+    &:active {
+        transform: scale(1.03);
+        box-shadow: 0 0 1rem #777;
+    }
+    
+}

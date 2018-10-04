@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.http import QueryDict
 from .models import Note
 from xncore import NoteManager
+from xncore import xauth
 import math
 # Create your views here.
 
@@ -93,3 +94,18 @@ def all(request, username):
     notes = list(Note.objects.filter(owner=username).order_by('last_edited').values())
     print(type(notes), type(notes[0]), len(notes))
     return JsonResponse(notes, safe=False)
+
+### Login and Sign up
+
+def login(request):
+    print('xnotesapp: Login')
+    if request.method == 'POST':
+        print(request.POST)
+    template = loader.get_template('xnotesapp/login.html')
+    return HttpResponse(template.render({},request))
+
+
+def signup(request):
+    print('xnotesapp: Sign Up')
+    template = loader.get_template('xnotesapp/signup.html')
+    return HttpResponse(template.render({},request))

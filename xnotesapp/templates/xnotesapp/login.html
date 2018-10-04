@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <title>XNote ~ Login</title>    
+    </head>
+    <body>
+        <div class="form-box">
+            <div class="form-brand">
+                <h1>xNote</h1>
+                <h3>The best note taking app for all your needs.</h3>
+            </div>
+            <form class="form" method="POST">
+                <h2>Sign in</h2>
+                <div class="form-group">
+                    <input type="text" placeholder="Username" name="username">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="form-group">
+                   <input type="password" placeholder="Password" name="password">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <a href="" class="link-light">Forgot Password?</a>
+                <button type="submit" class="btn-submit">Log in</button>
+            </form>
+            <div class="form-oauth">
+                <h3>Don't have an Account?</h3>
+                <div class="providers">
+                    <div class="provider">
+                        <i class="fab fa-google google"></i>
+                    </div>
+                    <div class="provider">
+                        <i class="fab fa-facebook-f facebook"></i>
+                    </div>
+                    <div class="provider">
+                        <i class="fab fa-github github"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" href=""></script>
+</html>

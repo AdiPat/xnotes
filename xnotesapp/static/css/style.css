@@ -334,6 +334,25 @@ html {
     transform: scale(18);
     background-color: rgba(211, 211, 211, 0.2); }
 
+.btn-submit, .btn-submit:link, .btn-submit:visited {
+  display: inline-block;
+  padding: 1rem 3rem;
+  text-align: center;
+  text-decoration: none;
+  background-color: navy;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  word-spacing: 1px;
+  font-size: 1.6rem;
+  transition: transform 0.5s;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #777; }
+
+.btn-submit:hover, .btn-submit:active {
+  transform: scale(1.03);
+  box-shadow: 0 0 1rem #777; }
+
 .input--text {
   font-size: 1.8rem;
   background-color: white;
@@ -493,6 +512,116 @@ body {
   @media only screen and (max-width: 37.5em) {
     .container {
       overflow: hidden; } }
+
+.form-box {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white; }
+
+.form-brand {
+  background-color: navy;
+  color: white;
+  line-height: 1.5;
+  padding: 3rem; }
+  .form-brand h3 {
+    font-size: 2rem;
+    font-weight: 300; }
+  .form-brand h1 {
+    font-size: 4rem;
+    font-weight: 600; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  padding: 3rem;
+  justify-content: center;
+  font-family: inherit; }
+  .form h2 {
+    color: #5a5a5a;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem; }
+  .form .form-group {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0; }
+    .form .form-group input {
+      background-color: white;
+      font-weight: 300;
+      font-family: inherit;
+      padding: 5px 2rem;
+      font-size: 1.8rem;
+      flex: 1;
+      border: none;
+      border-bottom: 1px solid lightgrey; }
+      .form .form-group input:focus {
+        outline: none; }
+    .form .form-group i {
+      color: grey;
+      font-size: 2rem;
+      margin-left: -3rem; }
+
+.link-light, .link-light:link, .link-light:visited {
+  display: inline-block;
+  align-self: flex-start;
+  color: grey;
+  margin-left: 1.6rem;
+  font-weight: 300;
+  text-decoration: none;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  border-bottom: 1px solid transparent; }
+
+.link-light:hover, .link-light:active {
+  color: #272727;
+  border-bottom: 1px solid grey; }
+
+.form-oauth {
+  display: flex;
+  flex-direction: column; }
+  .form-oauth h3 {
+    color: #5a5a5a;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 2rem; }
+  .form-oauth .providers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem; }
+    .form-oauth .providers .provider {
+      flex: 1;
+      text-align: center; }
+    .form-oauth .providers i {
+      display: inline-flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      height: 4rem;
+      color: white;
+      width: 4rem;
+      padding: 2rem;
+      border-radius: 50%;
+      box-shadow: 0 0 2px #777; }
+    .form-oauth .providers .google {
+      background-color: #DB4437; }
+    .form-oauth .providers .facebook {
+      background-color: #3C5A99; }
+    .form-oauth .providers .github {
+      background-color: #7DBBE6; }
+
+.btn-submit {
+  align-self: center;
+  margin: 3rem 0 1rem 0; }
 
 /*// box to add a note
 .add-note__box {
