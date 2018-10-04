@@ -39,12 +39,17 @@ def chunks(l, step):
     return chunks    
 
 def home(request, username):
-    template = loader.get_template('xnotesapp/index.html')
-    nm = NoteManager.NoteManager()
-    notes = nm.getNotes(username)
-    #print(dataChunks)
-    context = {'username': username, 'data':notes}
-    return HttpResponse(template.render(context, request))
+    if "sessionID" in request.session:
+        print("HOME: ", request.session['sessionID'])
+        template = loader.get_template('xnotesapp/index.html')
+        print(request.session._session_key, request.user)
+        nm = NoteManager.NoteManager()
+        notes = nm.getNotes(username)
+        #print(dataChunks)
+        context = {'username': username, 'data':notes}
+        return HttpResponse(template.render(context, request))
+    return redirect('login')
+    
 
 def edit(request, username, note_id):
     if request.method == 'POST':
@@ -103,7 +108,7 @@ def all(request, username):
 
 def login(request):
     print('xnotesapp: Login')
-    if request.method == 'POST':
+    if request.method == 'POST': 
         status = False
         try:
             uname = request.POST.__getitem__('username')
@@ -111,8 +116,11 @@ def login(request):
             uData = User.objects.filter(username=uname)
             if(uData and len(uData.values())== 1):
                 status = xauth.verify_credentials(uData.values()[0], pwd)
-            print(uname,pwd,uData.values())
             if(status):
+                sid = xauth.gen_sessionID()
+                request.session['sessionID'] = sid
+                request.session.set_expiry(60*60) # 1 hour 
+                print("LOGIN: ", sid)
                 return redirect('home', username=uname)
             else:
                 return HttpResponse('Invalid credentials')

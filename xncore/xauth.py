@@ -35,6 +35,13 @@ def gen_salt():
     salt = _salt[start:start+saltLen]
     return salt
 
+def gen_sessionID():
+    _s = str(base64.b64encode(os.urandom(16))[3:])
+    sid = ""
+    for c in _s:
+        if c.isalnum():
+            sid += c
+    return sid
 #
 # generates hash from password using salt
 # Use 1000 rounds for now to make it faster

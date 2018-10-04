@@ -21,3 +21,7 @@ class User(models.Model):
     username = models.CharField(max_length=50, blank=False)
     password = models.CharField(max_length=200, blank=False)
     salt = models.CharField(max_length=15, blank=False, default=xauth.gen_salt)
+    
+class Session(models.Model):
+    username = models.CharField(max_length=50, blank=False)
+    session_id = models.CharField(max_length=200, blank=False)
