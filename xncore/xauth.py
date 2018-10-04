@@ -2,17 +2,16 @@ import os
 from passlib.hash import sha256_crypt
 import base64
 import random
-from xnotesapp.models import Note
 from xncore import utils
+
 
 #
 # Verifies user credentials
 #
 
-def verify_credentials(username, password):
-    # get password hash for the user from db
-    salt = '' # get salt from db
-    pw_hash = '' # get users password hash from db
+def verify_credentials(uData):
+    salt = uData.salt
+    pw_hash = uData.password # get users password hash from db
     u_hash = hash_password(password,salt)
     return pw_hash == u_hash
 

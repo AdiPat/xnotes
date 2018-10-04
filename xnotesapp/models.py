@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.postgres.fields import ArrayField
+from xncore import xauth
 import uuid
 
 # Create your models here.
@@ -15,3 +16,8 @@ class Note(models.Model):
     trash = models.BooleanField(default=False)
     created = models.DateTimeField(null=False)
     last_edited = models.DateTimeField(null=False)
+    
+class User(models.Model):
+    username = models.CharField(max_length=50, blank=False)
+    password = models.CharField(max_length=200, blank=False)
+    salt = models.CharField(max_length=15, blank=False, default=xauth.gen_salt)
