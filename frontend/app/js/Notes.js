@@ -46,7 +46,9 @@ export default class Notes {
         }
         return labels;
     }
-
+    
+    // displays note in popup when card is clicked
+    
     displayNote(note_id) {
         // get note data
         const noteData = this.data[note_id];

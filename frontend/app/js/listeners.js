@@ -185,12 +185,6 @@ export const setupListeners = (_Notes) => {
         $(Constants.DOMStrings.checkboxLabelMenu).prop('checked', false);
     });
 
-    // close labels
-    //        $(Constants.DOMStrings.notePopup_labels).find(Constants.DOMStrings.actionBtn_text).click(function() {
-    //            console.log("Close labels");
-    //        });
-
-    // done button
     $(Constants.DOMStrings.notePopup_done).click((event) => {
         let val = Base.moveUpDOM(event.target, Constants.DOMStrings.notePopup.replace('.', ''));
         // redundant , but ok.
@@ -210,6 +204,7 @@ export const setupListeners = (_Notes) => {
 };
 
 
+// lister for all action buttons
 const setupActionEventListeners = (_Notes) => {
     // colorpicker
     $(Constants.DOMStrings.actionIcon).click(function(e) {
