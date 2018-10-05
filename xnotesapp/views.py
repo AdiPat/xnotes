@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.http import JsonResponse
 from django.template import loader
 from django.shortcuts import redirect
@@ -130,6 +130,20 @@ def login(request):
     template = loader.get_template('xnotesapp/login.html')
     return HttpResponse(template.render({},request))
 
+def logout(request):
+    print('xnotesapp: Logout')
+    if request.method == 'POST':
+        if "sessionID" in request.session:
+            print("LOGOUT")
+            del request.session['sessionID']
+            return redirect('xnote/login')
+    try:
+        uname = request.POST.__getitem__('username')
+        redirect('home', username=uname)
+    except:
+        pass
+    return HttpResponse('Shoot!')
+    
 
 def signup(request):
     print('xnotesapp: Sign Up')

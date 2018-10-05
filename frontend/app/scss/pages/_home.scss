@@ -14,7 +14,7 @@ body {
 .container {
     display: flex;
     position: relative;
-    z-index: 100;
+    z-index: 200;
     background-color: lighten(black, 15%);
     //box-shadow: 0 0 1.5rem rgba(black, 0.4);
 

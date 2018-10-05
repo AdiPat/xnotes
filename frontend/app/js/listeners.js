@@ -64,6 +64,17 @@ const actionHandler = (function () {
         const labels = _Notes.getLabelData();
         _Notes.addLabels(note_id, labels);
     };
+    
+    const logout = () => {
+        $.ajax({
+           type: 'POST',
+           url: '/xnote/logout',
+           data: {username: Base.getUsername()},
+           success: function(response) {
+               window.location = $(location).attr('href');
+           }
+        });
+    };
 
     return {
         setData, // sets data required for the handler 
@@ -75,7 +86,8 @@ const actionHandler = (function () {
         archive,
         discard,
         restore,
-        pickLabel
+        pickLabel,
+        logout
     };
 
 })();
@@ -158,7 +170,7 @@ export const setupListeners = (_Notes) => {
         // get note properties
         let elem = e.target;
         while(!($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.noteCard)))) {
-            if($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.actionIcon)))sav // terminate
+            if($(elem).hasClass(Base.selectorToClass(Constants.DOMStrings.actionIcon))) // terminate
                 return;
             elem = $(elem).parent();
         }
