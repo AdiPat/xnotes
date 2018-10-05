@@ -14,32 +14,18 @@ import sys
 import traceback
 # Create your views here.
 
+# Checks if user is authenticated
+def is_auth(request):
+    status = False
+    if "sessionID" in request.session:
+        status = True
+    return status
+
 def index(request):
     return HttpResponse("Welcome to xNotes")
-
-def chunks(l, n):
-    c = []
-    """Yield successive n-sized chunks from l."""
-    for i in range(0, len(l), n):
-         c.append(l[i:i + n])
-    return c
-
-#
-# [1,2,3,4,5,6,7,8]
-#  1 
-#
-
-def chunks(l, step):
-    chunks = [[] for i in range(step)]
-    i = j = 0
-    for item in l:
-        chunks[j].append(item)
-        j = (j + 1) % step
-        i += 1
-    return chunks    
-
+    
 def home(request, username):
-    if "sessionID" in request.session:
+    if is_auth(request):
         print("HOME: ", request.session['sessionID'])
         template = loader.get_template('xnotesapp/index.html')
         print(request.session._session_key, request.user)
@@ -52,6 +38,8 @@ def home(request, username):
     
 
 def edit(request, username, note_id):
+    if not is_auth(request):
+        return HttpResponse("Operation not permitted", status=403)
     if request.method == 'POST':
         print("Editing stuff...", request.POST);
         note = request.POST
@@ -64,6 +52,9 @@ def edit(request, username, note_id):
     return HttpResponse("Ok")
 
 def create(request, username):
+    if not is_auth(request):
+        return HttpResponse("Operation not permitted", status=403)
+    
     print("xnotesapp: Create view.",username)
     if request.method == 'POST':
         note = request.POST
@@ -73,6 +64,9 @@ def create(request, username):
     return HttpResponse("Create Note: ", username)
 
 def delete(request, username):
+    if not is_auth(request):
+        return HttpResponse("Operation not permitted", status=403)
+    
     print("xnotesapp: Delete view.",username)
     if request.method == 'DELETE':
         data = QueryDict(request.body)
@@ -85,6 +79,9 @@ def delete(request, username):
     return HttpResponse('Delete Note: ', username)
 
 def label(request, username):
+    if not is_auth(request):
+        return HttpResponse("Operation not permitted", status=403)
+    
     print("xnotesapp: Modify labels")
     if request.method == 'POST':
         labelData = request.POST
@@ -97,6 +94,9 @@ def label(request, username):
     return HttpResponse("Adding labels: ", username)
 
 def all(request, username):
+    if not is_auth(request):
+        return HttpResponse("Operation not permitted", status=403)
+    
     print("xnotesapp: Sending all notes")
     nm = NoteManager.NoteManager()
     ## Fix get notes to convert QuerySet into list
@@ -107,6 +107,8 @@ def all(request, username):
 ### Login and Sign up
 
 def login(request):
+    if is_auth(request):
+        return redirect('home', username=request.session['username'])
     print('xnotesapp: Login')
     if request.method == 'POST': 
         status = False
@@ -118,6 +120,7 @@ def login(request):
                 status = xauth.verify_credentials(uData.values()[0], pwd)
             if(status):
                 sid = xauth.gen_sessionID()
+                request.session['username'] = uname
                 request.session['sessionID'] = sid
                 request.session.set_expiry(60*60) # 1 hour 
                 print("LOGIN: ", sid)
@@ -142,7 +145,7 @@ def logout(request):
         redirect('home', username=uname)
     except:
         pass
-    return HttpResponse('Shoot!')
+    return redirect('login')
     
 
 def signup(request):

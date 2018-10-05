@@ -132,7 +132,7 @@ export default class Notes {
         const popupElem = $(`[data-id=${note_id}]`);
         this.data[note_id].title = $(popupElem).find(Constants.DOMStrings.notePopup_title).html();
         this.data[note_id].content = $(popupElem).find(Constants.DOMStrings.notePopup_body).html();
-        this.data[note-id].color = Base.rgbToHex(String($(popupElem).css('background-color')));
+        this.data[note_id].color = Base.rgbToHex(String($(popupElem).css('background-color')));
         // labels get set automatically when the user closes the labels option
         this.data[note_id].pinned = false; 
         this.data[note_id].trash = false;
@@ -143,11 +143,9 @@ export default class Notes {
             path += 'create'
         else
             path += note_id;
-        console.log("saveNote(): ", data, path);
         this.data[note_id].color = this.data[note_id].color.replace('#', ''); // server doesn't need the #
         this.data[note_id].owner = Base.getUsername();
         Base.postData(this.data[note_id], path);
-        console.log(data);
     }
     
     toggleCard(note_id, state) {
@@ -192,7 +190,8 @@ export default class Notes {
     }
      
     addLabels(note_id, labels) {
-        let curLabels = this.data[note_id].labels;
+        console.log('addlabels:', labels);
+        let curLabels = [] // we're adding all labels from the param and discarding the rest 
         if(!curLabels)
             curLabels = [];
         console.log(labels);
@@ -201,7 +200,6 @@ export default class Notes {
                 curLabels.push(e);
         });
         this.data[note_id].labels = curLabels;
-        console.log(this.data[note_id]);
     }
     
     highlightCard(note_id, status=true, toggle=false) {
