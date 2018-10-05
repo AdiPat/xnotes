@@ -231,7 +231,7 @@ export default class Notes {
     // sends updated note data from our local copy to server
     updateNote(note_id) {
         // for testing.. 
-        const username = 'sparky'; 
+        const username = Base.getUsername();
         
         $.ajax({
            type: 'POST',
