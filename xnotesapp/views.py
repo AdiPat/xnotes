@@ -71,7 +71,7 @@ def delete(request, username):
     if request.method == 'DELETE':
         data = QueryDict(request.body)
         note_id = data.__getitem__('note_id')
-        hard_delete = data.__getitem__('hard');
+        hard_delete = data.__getitem__('hard') == 'true'; # Convert to bool
         nm = NoteManager.NoteManager()
         print(note_id, hard_delete)
         nm.deleteNote(note_id,hard_delete=hard_delete)
